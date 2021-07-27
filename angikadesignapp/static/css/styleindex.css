@@ -1,0 +1,389 @@
+/* Universal i.e for all CSS Start  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  /* font-family: 'Acme', sans-serif; */
+  /* font-family: "Muli", sans-serif; */
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.text-white h1,
+.text-white h2,
+.text-white h3,
+.text-white h4,
+.text-white h5,
+.text-white h6,
+.text-white p,
+.text-white span,
+.text-white li,
+.text-white a {
+  color: #ffffff;
+}
+
+:root {
+  --mainCol: #000;
+  --accentCol: #ffd1e6;
+}
+/* Universal CSS Ends  */
+
+/* Navbar Begins  */
+.mainNav {
+  height: auto;
+  background-color: var(--accentCol);
+}
+.mainBtn {
+  font-size: 1rem;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 0.4rem 0;
+  padding: 0.8rem 0.4rem;
+  border: 2px solid #000;
+  outline: none;
+  border-radius: 0;
+}
+
+.btn:focus,
+.btn:active {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem #dddddd;
+}
+
+.categoriesNavbar {
+  margin-top: 4.8rem;
+}
+
+.navCat {
+  flex-direction: row;
+  /* overflow: auto; */
+}
+
+.navCatLi {
+  display: inline;
+  margin-left: 1rem;
+}
+
+.navCarDrop {
+  position: absolute !important;
+}
+
+.navCarDropli {
+  margin-top: 0.6rem;
+}
+
+.navCarDroplianchor {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: rgba(0, 0, 0, 0.55);
+}
+.formInput {
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchInput {
+  background-color: #ffffff;
+  border: 2px solid #000 !important;
+  border-radius: 0px;
+}
+
+.searchBtnForm {
+  background-color: #ffffff;
+  border: 2px solid #000;
+  border-radius: 0px;
+  width: auto;
+}
+
+.searchInput:focus,
+.searchInput:active {
+  box-shadow: 0 0 0 0.25rem #dddddd;
+}
+
+/* Navbar Begins  */
+
+/* mainImageSec Css Begins  */
+.mainImageSec {
+  margin-top: 0.6rem;
+  width: 100%;
+  height: auto;
+}
+.mainImageSecCard {
+  margin-bottom: 0.6rem;
+}
+/* mainImageSec Css Ends  */
+/* mainCategories Css Begins  */
+.mainCategories {
+  margin-top: 2rem;
+  width: 100%;
+  height: auto;
+}
+
+.mainCategoriesCard {
+  border: none;
+}
+/* mainCategories Css Ends  */
+/* specialsec Css Ends  */
+.specialsec {
+  margin-top: 2rem;
+  width: 100%;
+  height: auto;
+  background-color: var(--accentCol);
+}
+
+.specialsecdes {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 0rem;
+}
+/* specialsec Css Ends  */
+/* Footer Section Begins */
+.footersec {
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+  padding-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.footersectitle {
+  margin-top: 2.1rem;
+  font-size: 2.2rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.footersecdes {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.footerseclinklist {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.copyrightrow {
+  background-color: var(--accentCol);
+}
+
+.footercopyright {
+  margin-top: 1rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #000;
+}
+/* Footer Section Ends */
+/* Social Links Icons Begins */
+.fbitext {
+  color: #3b5998 !important;
+}
+
+.insitext {
+  color: #bc2a8d !important;
+}
+
+.twitext {
+  color: #00acee !important;
+}
+
+.linkitext {
+  color: #0e76a8 !important;
+}
+
+.gmitext {
+  color: #d44638 !important;
+}
+
+.phonetext {
+  color: var(--mainCol) !important;
+}
+
+.whatstext {
+  color: #25d366 !important;
+}
+
+/* Social Links Icons Ends */
+
+/* aboutSec Begins  */
+.aboutSec {
+  margin-top: 3rem;
+  width: 100%;
+  height: auto;
+}
+
+.founderQuote {
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.aboutSocialLi {
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.founderSec {
+  padding: 2rem 0rem;
+  margin-top: 4rem;
+  width: 100%;
+  height: auto;
+  background-color: var(--accentCol);
+}
+
+.mainTitle {
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-left: 1rem;
+  margin-bottom: 0.2rem;
+}
+/* aboutSec Ends  */
+/* Product Categories Begins  */
+.prodTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000000;
+}
+
+.prodPrice {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000000;
+}
+
+.prodMainCutPrice {
+  margin-left: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #a0a0a0;
+}
+/* Product Categories Ends  */
+
+/* Product Description Begins  */
+.productDesSec {
+  width: 100%;
+  height: auto;
+}
+.prodDesc {
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-top: 0.6rem;
+}
+
+.prodSize {
+  display: flex;
+  flex-direction: row;
+}
+
+.prodSizeBtn {
+  font-size: 1rem;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 0.4rem 0;
+  padding: 0.8rem 1.4rem;
+  border: 2px solid #000;
+  outline: none;
+  border-radius: 0;
+  margin-left: 1rem;
+}
+
+.placeOrderBtn {
+  width: 100%;
+}
+
+#share-button {
+  font-size: 1.8rem;
+}
+/* Product Description Ends  */
+
+/* Scroll Top Btn Begins  */
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 40px;
+  z-index: 99;
+  border: none;
+  color: #fff;
+  background: #000;
+  padding: 10px;
+  border-radius: 0px;
+}
+
+#myBtn:hover {
+  color: #000;
+  background-color: var(--accentCol);
+}
+/* Scroll Top Btn Ends */
+
+/* Media Queries Begins  */
+@media (max-width: 399px) {
+  .mainImageSecMainCard {
+    margin-top: 1rem;
+  }
+
+  .foundersocialIcon {
+    flex-direction: row;
+  }
+  .aboutSocialLi {
+    display: inline;
+    margin-left: 1rem;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 576px) {
+  .mainImageSecMainCard {
+    margin-top: 1rem;
+  }
+  .foundersocialIcon {
+    flex-direction: row;
+  }
+  .aboutSocialLi {
+    display: inline;
+    margin-left: 1rem;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 767px) {
+  .foundersocialIcon {
+    flex-direction: row;
+  }
+  .aboutSocialLi {
+    display: inline;
+    margin-left: 2rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .foundersocialIcon {
+    flex-direction: row;
+  }
+  .aboutSocialLi {
+    display: inline;
+    margin-left: 2.4rem;
+  }
+}
+/* Media Queries Ends  */

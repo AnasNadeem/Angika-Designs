@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block title %}- {{ prod.title }}{% endblock title %}
+{% block mainCont %}
+<section class="productDesSec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-12">
+                <!-- Image Carousel Begins  -->
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{{ prod.main_image.url }}" class="d-block w-100" alt="{{ prod.title }} image">
+                        </div>
+                        {% if prod.second_image %}
+                        <div class="carousel-item">
+                            <img src="{{ prod.second_image.url }}" class="d-block w-100" alt="{{ prod.title }} image">
+                        </div>
+                        {% endif %}
+                        {% if prod.third_image %}
+                        <div class="carousel-item">
+                            <img src="{{ prod.third_image.url }}" class="d-block w-100" alt="{{ prod.title }} image">
+                        </div>
+                        {% endif %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <!-- Image Carousel Ends  -->
+            </div>
+            <div class="col-lg-8 col-12">
+                <p class="mainTitle">
+                    {{ prod.title }}
+                    <a id="share-button"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                </p>
+                <span class="prodPrice">
+                    ₹{{ prod.main_price }}
+                </span>
+                {% if main_cut_price %}
+                <del class="prodMainCutPrice">
+                    ₹{{ prod.main_cut_price }}
+                </del>
+                {% endif %}
+                <p class="prodDesc">
+                    {{ prod.description }}
+                </p>
+                <p class="prodPrice">
+                    Available Sizes:
+                </p>
+                <div class="prodSize">
+                    {% if prod.small_size %}
+                    <button class="btn prodSizeBtn" disabled>
+                        S
+                    </button>
+                    {% endif %}
+                    {% if prod.medium_size %}
+                    <button class="btn prodSizeBtn" disabled>
+                        M
+                    </button>
+                    {% endif %}
+                    {% if prod.large_size %}
+                    <button class="btn prodSizeBtn" disabled>
+                        L
+                    </button>
+                    {% endif %}
+                    {% if prod.xl_size %}
+                    <button class="btn prodSizeBtn" disabled>
+                        XL
+                    </button>
+                    {% endif %}
+                    {% if prod.xxl_size %}
+                    <button class="btn prodSizeBtn" disabled>
+                        XXL
+                    </button>
+                    {% endif %}
+                </div>
+                <p class="prodPrice mt-2">
+                    Customizable:
+                    {% if prod.customizable %}
+                    <span class="prodMainCutPrice">
+                        Yes
+                    </span>
+                    {% else %}
+                    <span class="prodMainCutPrice">
+                        No
+                    </span>
+                    {% endif %}
+                </p>
+                <p class="prodPrice mt-2">
+                    Color:
+                    <span class="prodMainCutPrice">
+                        {{ prod.color }}
+                    </span>
+                </p>
+                <p class="prodPrice">
+                    Type:
+                    <span class="prodMainCutPrice">
+                        {{ prod.cloth_type }}
+                    </span>
+                </p>
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="tel:+916207781113" class="btn mainBtn placeOrderBtn">
+                            Place Order Via Call
+                            <i class="fa fa-phone phoni" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock mainCont %}

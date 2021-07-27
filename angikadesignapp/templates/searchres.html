@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block title %}- Search Results{% endblock title %}
+{% block mainCont %}
+
+<!-- Search Section Begins      -->
+<section class="searchSec">
+    <div class="container">
+        {% if prod %}
+        <div class="row">
+            <div class="col-lg-12 col-12 text-center">
+                <p class="mainTitle">
+                    Search Results For {{ query }}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <p class="prodPrice">
+                    Filter
+                </p>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <form action="{% url 'minmax' %}" method="GET">
+                            <input type="hidden" name="search" value="{{ query }}">
+                            <button class="btn mainBtn mb-0">
+                                min to max
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-6">
+                        <form action="{% url 'maxmin' %}" method="GET">
+                            <input type="hidden" name="search" value="{{ query }}">
+                            <button class="btn mainBtn mb-0">
+                                max to min
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <form action="{% url 'minrangemax' %}" method="get">
+                    <input type="hidden" name="search" value="{{ query }}">
+                    <div class="row">
+                        <div class="col-6">
+                            <input class="form-control searchInput" name="min_price" type="number"
+                                placeholder="Min Price">
+                        </div>
+                        <div class="col-6">
+                            <input class="form-control searchInput" name="max_price" type="number"
+                                placeholder="Max Price">
+                        </div>
+                    </div>
+                    <button class="btn mainBtn" type="submit">
+                        Search in Range
+                    </button>
+                </form>
+            </div>
+            <div class="col-lg-8 col-12">
+                <div class="row">
+                    {% for i in prod %}
+                    <div class="col-lg-4">
+                        <a href="/product/{{i.slug}}/">
+                            <div class="card mainCategoriesCard">
+                                <!-- Image Carousel Begins  -->
+                                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="{{ i.main_image.url }}" class="d-block w-100" alt="{{ i.title }}">
+                                        </div>
+                                        {% if i.second_image %}
+                                        <div class="carousel-item">
+                                            <img src="{{ i.second_image.url }}" class="d-block w-100"
+                                                alt="{{ i.title }}">
+                                        </div>
+                                        {% endif %}
+                                        {% if i.third_image %}
+                                        <div class="carousel-item">
+                                            <img src="{{ i.third_image.url }}" class="d-block w-100"
+                                                alt="{{ i.title }}">
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <!-- Image Carousel Ends  -->
+                                <div class="card-body">
+                                    <p class="prodTitle">
+                                        {{ i.title }}
+                                    </p>
+                                    <span class="prodPrice">
+                                        ₹{{ i.main_price }}
+                                    </span>
+                                    {% if i.main_cut_price %}
+                                    <del class="prodMainCutPrice">
+                                        ₹{{ i.main_cut_price }}
+                                    </del>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% if forloop.counter|divisibleby:3 and forloop.counter > 3 and not forloop.last %}
+                </div>
+                <div class="row">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p class="mainTitle">
+            Sorry No Results Found
+        </p>
+        <a href="{% url 'home' %}" class="btn mainBtn">
+            Go to Home
+        </a>
+        {% endif %}
+    </div>
+</section>
+<!-- Search Section Ends      -->
+{% endblock mainCont %}

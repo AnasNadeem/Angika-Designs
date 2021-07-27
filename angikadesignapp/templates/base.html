@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if tag %}
+    {% for i in tag %}
+    {% if i.keyword %}
+    <meta name="keywords" content="{{ i.keyword }}">
+    {% endif %}
+    {% if i.desc %}
+    <meta name="description" content="{{ i.desc }}">
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% for i in social %}
+    {% if i.logo %}
+    <link rel="icon" href="{{ i.logo.url }}" sizes="16x16 32x32" type="image/*">
+    {% endif %}
+    {% endfor %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    {% load static %}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'css/styleindex.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Angika Designs {% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+
+    <!-- Navbar Begins  -->
+    <nav class="navbar navbar-light fixed-top mainNav">
+        <div class="container">
+            <div class="mainNavHeading">
+                {% if i.social %}
+                {% for i in social %}
+                {% if i.logo and i.include_this_logo_in_navbar %}
+                <a href="{% url 'home' %}" class="navbar-brand">
+                    <img src="{{ i.logo.url }}" width="50px" alt="angika designs logo">
+                    Angika Designs
+                </a>
+                {% else %}
+                <a href="{% url 'home' %}" class="navbar-brand">
+                    Angika Designs
+                </a>
+                {% endif %}
+                {% endfor %}
+                {% else %}
+                <a href="{% url 'home' %}" class="navbar-brand">
+                    Angika Designs
+                </a>
+                {% endif %}
+            </div>
+            <div class="d-flex">
+                <a href="#footerId"><button class="btn mainBtn">Contact Us</button></a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar Ends  -->
+
+    <!-- Categories Navbar Begins   -->
+    <div class="container categoriesNavbar">
+        <nav class="navbar navbar-light bg-white">
+            <div class="container-fluid">
+                <ul class="navbar-nav navCat mx-auto">
+                    {% if main_cat %}
+                    {% for i in main_cat %}
+                    <li class="nav-item dropdown navCatLi">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-hover="dropdown"
+                            data-bs-toggle="dropdown" aria-expanded="true">
+                            {{ i.for_title }}
+                        </a>
+                        <ul class="dropdown-menu navCarDrop row" aria-labelledby="navbarDropdown">
+                            <div class="col-12">
+                                {% if i.categories_set.all %}
+                                <h2>Categories</h2>
+                                {% for j in i.categories_set.all %}
+                                <a href="/category/{{ j.slug }}/">
+                                    <button class="btn mainBtn">{{ j.title }}</button>
+                                </a>
+                                <br>
+                                {% endfor %}
+                                {% else %}
+                                <h2>Coming Soon</h2>
+                                {% endif %}
+                            </div>
+                        </ul>
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                    <li class="nav-item navCatLi">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            Search
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12">
+                <div class="collapse" id="collapseExample">
+                    <form action="{% url 'search' %}" method="get">
+                        <div class="row">
+                            <div class="col-lg-8 mx-auto">
+                                <div class="input-group mt-3 mb-3">
+                                    <input type="text" name="search" class="form-control searchInput"
+                                        placeholder="Search Products" required>
+                                    <button class="btn searchBtnForm" type="submit">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Categories Navbar Ends   -->
+    <div class="container">
+        {% if messages %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {% for i in messages %}
+            {{ i }}
+            {% endfor %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+    </div>
+
+    {% block mainCont %}
+    {% endblock mainCont %}
+
+
+
+    <!-- Footer Begins  -->
+    <section class="footersec" id="footerId">
+        <div class="container">
+            <div class="row">
+                {% for i in social %}
+                <div class="col-lg-6">
+                    <p class="footersectitle">
+                        angika designs
+                    </p>
+                    <p class="footersecdes">
+                        {{ i.angika_about_description }}
+                    </p>
+                    <a href="{% url 'about' %}"><button class="btn mainBtn mt-0">Know More</button></a>
+                </div>
+
+                <div class="col-lg-6 text-center">
+                    <p class="footersectitle">
+                        Get in touch
+                    </p>
+                    {% if i.facebook_link %}
+                    <li class="footerseclinklist">
+                        <a class="fbitext" target="_blank" href="{{ i.facebook_link }}">
+                            Facebook <i class="fab fa-facebook-f fbi" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if i.twitter_username %}
+                    <li class="footerseclinklist">
+                        <a class="twitext" target="_blank" href="https://twitter.com/{{ i.twitter_username }}">
+                            Twitter <i class="fab fa-twitter twi" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if i.instagram_username %}
+                    <li class="footerseclinklist">
+                        <a class="insitext" target="_blank" href="https://instagram.com/{{ i.instagram_username }}">
+                            Instagram <i class="fab fa-instagram insi" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if i.linkedin_link %}
+                    <li class="footerseclinklist">
+                        <a class="linkitext" target="_blank" href="{{ i.linkedin_link }}">
+                            LinkedIn <i class="fab fa-linkedin-in linki" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if i.gmail %}
+                    <li class="footerseclinklist">
+                        <a class="gmitext" href="mailto:{{ i.gmail }}">
+                            Gmail <i class="far fa-envelope gmi" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if i.phone_number %}
+                    <li class="footerseclinklist">
+                        <a class="phonetext" href="tel:{{ i.phone_number }}">
+                            Call Us <i class="fa fa-phone-alt phoni" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if i.whatsapp_number %}
+                    <li class="footerseclinklist">
+                        <a class="whatstext" target="_blank" href="https://wa.me/{{ i.whatsapp_number }}">
+                            Whatsapp <i class="fab fa-whatsapp whatsi" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- T&C Footer Begins   -->
+    <div class="container">
+        <nav class="navbar navbar-light bg-white">
+            <div class="container-fluid">
+                <ul class="navbar-nav navCat mx-auto">
+                    <li class="nav-item navCatLi">
+                        <a class="nav-link" href="{% url 'privacy' %}">Privacy Policy</a>
+                    </li>
+                    <li class="nav-item navCatLi">
+                        <a class="nav-link" href="{% url 'terms' %}">Terms & Conditions</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- T&C Footer Ends   -->
+    <section class="copyrightrow">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 text-center mx-auto">
+                    <p class="footercopyright">
+                        All Right Reserved To Angika Designs
+                        <!-- <i class="far fa-copyright" aria-hidden="true"></i> -->
+                        <span id="copyrightYear"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="scrolltop float-right">
+            <i class="fa fa-arrow-up" id="myBtn"></i>
+        </div>
+    </section>
+    <!-- Footer Ends  -->
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/somefunc.js' %}"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>

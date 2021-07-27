@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}- Privacy Policy{% endblock title %}
+{% block mainCont %}
+<!-- Privacy Policy Section Begins  -->
+<section class="productDesSec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12">
+
+                {% for i in privacy %}
+                <p class="mainTitle">
+                    {{ i.title }}
+                </p>
+                <p class="prodMainCutPrice">
+                    {{ i.statement }}
+                </p>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Privacy Policy Section Ends  -->
+{% endblock mainCont %}

@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block title %}- About{% endblock title %}
+{% block mainCont %}
+<!-- AboutSec Begins  -->
+{% for i in about %}
+<section class="aboutSec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <img src="{{ i.angika_image.url }}" class="d-block w-100 founderImageClass"
+                    alt="About Angika Designs Image">
+            </div>
+            <div class="col-lg-6 col-12">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    {% if i.history %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                History
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse show"
+                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">{{ i.history }}</div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if i.categories %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                Categories
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">{{ i.categories }}</div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if i.aim %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                aria-controls="flush-collapseThree">
+                                Aim
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">{{ i.aim }}</div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if i.award %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                aria-controls="flush-collapseFour">
+                                Award
+                            </button>
+                        </h2>
+                        <div id="flush-collapseFour" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">{{ i.award }}</div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+{% for i in founder %}
+<section class="founderSec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <p class="mainTitle">Founder: {{ i.founder_name }}</p>
+                <p class="founderQuote">
+                    " {{ i.founder_quote }} "
+                </p>
+
+            </div>
+            <div class="col-lg-4 col-12">
+                <img src="{{ i.founder_image.url }}" class="d-block w-100 founderImageClass" alt="">
+            </div>
+            <div class="col-lg-2 col-12">
+                <ul class="foundersocialIcon">
+                    {% if i.facebook_link %}
+                    <li class="aboutSocialLi">
+                        <a class="fbitext" href="{{ i.facebook_link }}">
+                            <i class="fab fa-facebook-f fbi" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if i.twitter_username %}
+                    <li class="aboutSocialLi">
+                        <a class="twitext" href="{{ i.twitter_username }}">
+                            <i class="fab fa-twitter twi" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if i.instagram_username %}
+                    <li class="aboutSocialLi">
+                        <a class="insitext" href="{{ i.instagram_username }}">
+                            <i class="fab fa-instagram insi" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if i.linkedin_link %}
+                    <li class="aboutSocialLi">
+                        <a class="linkitext" href="{{ i.linkedin_link }}">
+                            <i class="fab fa-linkedin-in linki" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if i.gmail %}
+                    <li class="aboutSocialLi">
+                        <a class="gmitext" href="mailto:{{ i.gmail }}">
+                            <i class="far fa-envelope gmi" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if i.whatsapp_number %}
+                    <li class="aboutSocialLi">
+                        <a class="whatstext" href="https:wa.me/+91{{ i.whatsapp_number }}">
+                            <i class="fab fa-whatsapp whatsi" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+<!-- AboutSec Ends  -->
+{% endblock mainCont %}
